@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end 
     
+  def authenticate_user
+    if @current_user == nil
+      redirect_to("/login")
+    end 
+  end 
+  
 end
