@@ -137,5 +137,22 @@ h1, h2 {
       height: 30px;
       margin-left: 20px;
     }
+    
+    .topic-index-icon-active{
+      width: 35px;
+      height: 30px;
+      margin-left: 20px;
+      color: red;
+    }
   }
+}
+
+.comment{
+  padding-top:100px;
+
+  z-index:20;
+}
+
+.comment-content{
+  padding-top:30px;
 }

@@ -1,8 +1,8 @@
 class TopicsController < ApplicationController
-  before_action :authenticate_user,{only:[:new, :create]}
+  before_action :authenticate_user,{only:[:new]}
   
   def index
-    @topics = Topic.all
+    @topics = Topic.all.includes(:favorite_users)
   end 
   
   def new
@@ -20,6 +20,8 @@ class TopicsController < ApplicationController
     end 
   end 
   
+ 
+ 
   
   
   private
