@@ -1,36 +1,49 @@
 <div class="topic-index-wrapper">
   <div class="container">
-    <% @topic.each do |topic| %>
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="topic-index-single">
-            <h2 class="topic-auther">
-              <%=topic.user.name %>
-            </h2>
-            <%= image_tag topic.image.url %>
-            <% if !topic.favorite_users.include?(current_user) %>
-              <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
-                <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
-                <%= topic.favorite_users.count %>
-              <% end %> 
-            <% else %>
-              <%= link_to favorites_path(topic_id: topic.id), method: :delete do %>
-                <%= image_tag 'icons/heart-icon-red.png', class: 'topic-index-icon-active' %>
-                <%= topic.favorite_users.count %>
+    <% @topics.each do |topic| %>
+      <%= link_to new_topic_comment_path(topic_id: topic.id) do %>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <div class="topic-index-single">
+              <h2 class="topic-auther">
+                <%= link_to new_topic_comment_path(topic_id: topic.id) do %>
+                  <%=topic.user.name %>
+                <% end %>
+              </h2>
+              <%= link_to new_topic_comment_path(topic_id: topic.id) do %>
+                <%= image_tag topic.image.url %>
               <% end %>
-            <% end %>
-            <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
-            <p>
-            <%= topic.description %>
-            </p>
-            
-            
-            
-              
-            </p>
+              <% if !topic.favorite_users.include?(current_user) %>
+                <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
+                  <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+                  <%= topic.favorite_users.count %>
+                <% end %> 
+              <% else %>
+                <%= link_to favorites_path(topic_id: topic.id), method: :delete do %>
+                  <%= image_tag 'icons/heart-icon-red.png', class: 'topic-index-icon-active' %>
+                  <%= topic.favorite_users.count %>
+                <% end %>
+              <% end %>
+              <%= link_to new_topic_comment_path(topic_id: topic.id) do %>
+                <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
+              <% end %>
+              <p class="description">
+              <%= topic.description %>
+              </p>
+              <%= link_to new_topic_comment_path(topic_id: topic.id) do %>
+                <div class="content">
+                  <% topic.comments.each do |comment| %>
+                    <div>
+                      <%= comment.content %>
+                    </div>
+                  <% end %>
+                </div>  
+              <% end %>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

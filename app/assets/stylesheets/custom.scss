@@ -89,6 +89,10 @@ h1, h2 {
   }
 }
 
+.navbar-right li{
+  float:left;
+}
+
 .btn-black{
   color: #565656;
   border: 1px solid #565656;
@@ -155,4 +159,15 @@ h1, h2 {
 
 .comment-content{
   padding-top:30px;
+}
+
+.content{
+  color:black;
+  padding-left:20px;
+  margin-top:5px;
+}
+
+.description{
+  padding-left:15px;
+  font-size:20px;
 }
